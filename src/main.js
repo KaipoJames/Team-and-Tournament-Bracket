@@ -1,6 +1,9 @@
-import { app } from "./team.js";
+import { Team, app } from "./team.js";
 
-const teams = [];
+const teamObjects = [];
+const teamNames = [];
+
+const contenders = [];
 
 // name, city, rating, strength, speed, agility, endurance
 const sharks = app.createTeam1("sharks", "honolulu", 68, 79, 72, 78);
@@ -12,16 +15,10 @@ const warriors = app.createTeam2("warriors", "kalihi", 75);
 const cougars = app.createTeam2("kaiser", "castle", 73);
 const bulldogs = app.createTeam2("bulldogs", "pearlridge", 69);
 
-teams.push(
-  sharks,
-  menehune,
-  knights,
-  mules,
-  lunas,
-  warriors,
-  cougars,
-  bulldogs
-);
+//prettier-ignore
+teamObjects.push(sharks, menehune, knights, mules, lunas, warriors, cougars, bulldogs);
+//prettier-ignore
+teamNames.push("sharks", "menehune", "knights", "mules", "lunas", "warrios", "cougars", "bulldogs")
 
 /* sharks.addToLocalStorage();
 menehune.addToLocalStorage();
@@ -32,7 +29,7 @@ warriors.addToLocalStorage();
 cougars.addToLocalStorage();
 bulldogs.addToLocalStorage(); */
 
-for (var team of teams) {
-  team.getFromLocalStorage();
-  team.printStats();
+for (var teamObject of teamObjects) {
+  const teamData = teamObject.getFromLocalStorage();
+  console.log(teamData);
 }

@@ -1,4 +1,4 @@
-class Team {
+export class Team {
   constructor(name, city, strength, speed, agility, endurance, rating) {
     this.name = name;
     this.city = city;
@@ -102,11 +102,19 @@ class Team {
       //Get the data from local storage
       teamData = JSON.parse(localStorageContent);
     }
+    //console.log(teamData);
+    return teamData;
   }
 }
 
 // Object containing Helper Methods
 export const app = {
+  createTeam(name, city, strength, speed, agility, endurance, rating) {
+    //prettier-ignore
+    const newTeam = new Team(name, city, strength, speed, agility, endurance, rating);
+    return newTeam;
+  },
+
   createTeam1(name, city, strength, speed, agility, endurance) {
     const newTeam = new Team(name, city, strength, speed, agility, endurance);
     const teamRating = newTeam.calculateRating();
