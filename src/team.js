@@ -105,6 +105,10 @@ export class Team {
     //console.log(teamData);
     return teamData;
   }
+
+  addIcon() {
+    this.src = "../img/" + this.name + ".png";
+  }
 }
 
 // Object containing Helper Methods
@@ -112,6 +116,7 @@ export const app = {
   createTeam(name, city, strength, speed, agility, endurance, rating) {
     //prettier-ignore
     const newTeam = new Team(name, city, strength, speed, agility, endurance, rating);
+    newTeam.addIcon();
     return newTeam;
   },
 
@@ -119,6 +124,7 @@ export const app = {
     const newTeam = new Team(name, city, strength, speed, agility, endurance);
     const teamRating = newTeam.calculateRating();
     newTeam.rating = teamRating;
+    newTeam.addIcon();
     return newTeam;
   },
 
@@ -129,6 +135,7 @@ export const app = {
     newTeam.agility = newTeam.calculateStats(teamRating)[0];
     newTeam.endurance = newTeam.calculateStats(teamRating)[0];
     newTeam.rating = teamRating;
+    newTeam.addIcon();
     return newTeam;
   },
 
