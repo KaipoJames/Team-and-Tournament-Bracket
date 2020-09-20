@@ -15,6 +15,7 @@ class Team {
     );
     return rating;
   }
+
   calculateStats(rating) {
     const stats = [];
     var sum, average, strength, speed, agility, endurance;
