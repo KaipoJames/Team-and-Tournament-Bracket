@@ -132,6 +132,15 @@ export const app = {
     return newTeam;
   },
 
+  returnTeam(teamObject) {
+    switch (teamObject) {
+      case "sharks":
+        return teamObject;
+      case "menehune":
+        return teamObject;
+    }
+  },
+
   randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   },

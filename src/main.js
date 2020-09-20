@@ -1,8 +1,13 @@
 import { Team, app } from "./team.js";
 
+const startingContainer = document.querySelector(".starting-container");
+//prettier-ignore
+const quarterFinalsContainer = document.querySelector(".quarter-finals-container");
+const semiFinalsContainer = document.querySelector(".semi-finals-container");
+const finalsContainer = document.querySelector(".finals-container");
+
 const teamObjects = [];
 const teamNames = [];
-
 const contenders = [];
 
 // name, city, rating, strength, speed, agility, endurance
@@ -30,6 +35,9 @@ cougars.addToLocalStorage();
 bulldogs.addToLocalStorage(); */
 
 for (var teamObject of teamObjects) {
-  const teamData = teamObject.getFromLocalStorage();
-  console.log(teamData);
+  const teamLS = teamObject.getFromLocalStorage();
+  //prettier-ignore
+  const teamObj = app.createTeam(teamLS.name, teamLS.city, teamLS.strength, teamLS.speed, teamLS.agility, teamLS.endurance, teamLS.rating)
+  teamObj.printStats();
+  contenders.push(teamObj);
 }
