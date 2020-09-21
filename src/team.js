@@ -63,6 +63,24 @@ export class Team {
     this.updateRating(this.strength, this.speed, this.agility, this.endurance);
   }
 
+  decreaseStat(stat_name, amount) {
+    switch (stat_name) {
+      case "strength":
+        this.strength -= amount;
+        break;
+      case "speed":
+        this.speed -= amount;
+        break;
+      case "agility":
+        this.agility -= amount;
+        break;
+      case "endurance":
+        this.endurance -= amount;
+        break;
+    }
+    this.updateRating(this.strength, this.speed, this.agility, this.endurance);
+  }
+
   updateRating(new_strength, new_speed, new_agility, new_endurance) {
     let new_rating = Math.round(
       (new_strength + new_speed + new_agility + new_endurance) / 4
@@ -72,6 +90,7 @@ export class Team {
     this.agility = new_agility;
     this.endurance = new_endurance;
     this.rating = new_rating;
+    this.addToLocalStorage();
   }
 
   changeName(newName) {
@@ -139,14 +158,14 @@ export const app = {
     return newTeam;
   },
 
-  returnTeam(teamObject) {
+  /* returnTeam(teamObject) {
     switch (teamObject) {
       case "sharks":
         return teamObject;
       case "menehune":
         return teamObject;
     }
-  },
+  }, */
 
   randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);

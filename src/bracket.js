@@ -41,7 +41,7 @@ export const bracket = {
   },
 
   addContentToBracket(cell, name, rating, logo) {
-    console.log(cell.children);
+    //console.log(cell.children);
     for (let i = 0; i < cell.children.length; i++) {
       if (cell.children[i].className == "team-name") {
         cell.children[i].innerHTML = name;
@@ -85,7 +85,7 @@ export const bracket = {
   initializeTeams() {
     const contenders = this.getContentfromMain();
     cells.splice(8);
-    console.log(cells.length);
+    //console.log(cells.length);
     let i = 0;
     for (let j = 0; j < 8; j++) {
       this.iterate(i, contenders);

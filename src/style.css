@@ -127,3 +127,12 @@ main {
   position: absolute;
   right: 0.5rem;
 }
+
+/* TODO
+
+Add icons to simulate a specific bracket block(game)
+can use the arrow symbol icon ->
+
+Add classes for defeated team and winning team
+defeated: slash throuhg name
+winner: name turns green
