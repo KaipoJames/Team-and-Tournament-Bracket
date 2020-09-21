@@ -54,6 +54,63 @@ main {
   align-items: center;
   position: relative;
 }
+.cell:after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 6rem;
+  position: absolute;
+  background: black;
+  right: -6rem;
+  top: 50%;
+}
+.cell:before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 5.8rem;
+  position: absolute;
+  background: black;
+  left: -5.8rem;
+  top: 50%;
+}
+.starting-container-child:before {
+  display: none;
+}
+.finals-container-child:after {
+  display: none;
+}
+.vertical-line {
+  height: 7.2rem;
+  width: 2px;
+  background: black;
+  position: absolute;
+  left: -5.8rem;
+}
+.vertical-line-quarter-1 {
+  margin-bottom: 4rem;
+}
+.vertical-line-quarter-2 {
+  margin-bottom: 1.6rem;
+}
+.vertical-line-quarter-3 {
+  margin-top: 1.4rem;
+}
+.vertical-line-quarter-4 {
+  margin-top: 4.2rem;
+}
+.vertical-line-semi {
+  height: 13.2rem;
+  margin-bottom: 4rem;
+}
+.vertical-line-semi-6 {
+  margin-top: 8.6rem;
+}
+.vertical-line-finals {
+  height: 21.8rem;
+  margin-top: 0.2rem;
+}
+
 .team-rating {
   font-size: 1.5rem;
   position: absolute;

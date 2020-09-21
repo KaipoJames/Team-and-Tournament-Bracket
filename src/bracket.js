@@ -11,6 +11,7 @@ let cells = [];
 export const bracket = {
   init() {
     this.addBracketsToContainers();
+    this.addVerticalLines();
     this.initializeTeams();
   },
 
@@ -90,16 +91,31 @@ export const bracket = {
       this.iterate(i, contenders);
       i++;
     }
+  },
 
-    /* for (var cell of cells) {
-      for (var i = 0; i < contenders.length; i++) {
-        this.addContentToBracket(
-          cell,
-          contenders[i].name,
-          contenders[i].rating,
-          contenders[i].city
-        );
+  addVerticalLines() {
+    let c = 1;
+    for (const cell of cells) {
+      if (cell.classList.contains("quarter-finals-container-child")) {
+        const verticalLine = document.createElement("div");
+        verticalLine.classList.add("vertical-line");
+        verticalLine.classList.add("vertical-line-quarter");
+        verticalLine.classList.add("vertical-line-quarter-" + c);
+        c++;
+        cell.appendChild(verticalLine);
+      } else if (cell.classList.contains("semi-finals-container-child")) {
+        const verticalLine = document.createElement("div");
+        verticalLine.classList.add("vertical-line");
+        verticalLine.classList.add("vertical-line-semi");
+        verticalLine.classList.add("vertical-line-semi-" + c);
+        c++;
+        cell.appendChild(verticalLine);
+      } else if (cell.classList.contains("finals-container-child")) {
+        const verticalLine = document.createElement("div");
+        verticalLine.classList.add("vertical-line");
+        verticalLine.classList.add("vertical-line-finals");
+        cell.appendChild(verticalLine);
       }
-    } */
+    }
   },
 };
