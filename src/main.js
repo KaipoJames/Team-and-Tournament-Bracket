@@ -7,23 +7,33 @@ const teamNames = [];
 const contenders = [];
 
 // name, city, rating, strength, speed, agility, endurance
-const wyverns = app.createTeam2("wyverns", "manoa", 70);
+/* const wyverns = app.createTeam2("wyverns", "manoa", 70);
 const menehune = app.createTeam2("menehune", "mililani", 78);
 const knights = app.createTeam2("knights", "castle", 72);
 const mules = app.createTeam2("mules", "leilehua", 79);
 const lions = app.createTeam2("lions", "kailua", 76);
 const warriors = app.createTeam2("warriors", "kalihi", 75);
 const raptors = app.createTeam2("raptors", "radford", 73);
-const dolphins = app.createTeam2("dolphins", "waikele", 69);
+const dolphins = app.createTeam2("dolphins", "waikele", 69); */
 
 //prettier-ignore
-teamObjects.push(wyverns, menehune, knights, mules, lions, warriors, raptors, dolphins);
+//teamObjects.push(wyverns, menehune, knights, mules, lions, warriors, raptors, dolphins);
 //prettier-ignore
-teamNames.push("wyverns", "menehune", "knights", "mules", "lions", "warrios", "raptors", "dolphins");
+//teamNames.push("wyverns", "menehune", "knights", "mules", "lions", "warrios", "raptors", "dolphins");
 
 export const main = {
-  init() {
-    this.updateLocalStorage();
+
+  chooseTeams(team1, team2, team3, team4, team5, team6, team7, team8) {
+    const team_1 = app.createTeam2(team1, "manoa", 70);
+    const team_2 = app.createTeam2(team2, "mililani", 78);
+    const team_3 = app.createTeam2(team3, "castle", 72);
+    const team_4 = app.createTeam2(team4, "leilehua", 79);
+    const team_5 = app.createTeam2(team5, "kailua", 76);
+    const team_6 = app.createTeam2(team6, "kalihi", 75);
+    const team_7 = app.createTeam2(team7, "radford", 73);
+    const team_8 = app.createTeam2(team8, "waikele", 69);
+    teamObjects.push(team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8);
+    this.updateLocalStorage(teamObjects);
   },
 
   getContenders() {
@@ -37,15 +47,10 @@ export const main = {
     return contenders;
   },
 
-  updateLocalStorage() {
-    wyverns.addToLocalStorage();
-    menehune.addToLocalStorage();
-    knights.addToLocalStorage();
-    mules.addToLocalStorage();
-    lions.addToLocalStorage();
-    warriors.addToLocalStorage();
-    raptors.addToLocalStorage();
-    dolphins.addToLocalStorage();
+  updateLocalStorage(teams) {
+    for (var team of teams) {
+      team.addToLocalStorage();
+    }
   },
 
   runTournamentSimulation() {
@@ -84,6 +89,17 @@ export const main = {
 };
 
 //main.init();
+
+main.chooseTeams(
+  "wyverns",
+  "dolphins",
+  "knights",
+  "mules",
+  "warriors",
+  "lions",
+  "raptors",
+  "menehune"
+);
 main.getContenders();
 bracket.init();
 main.runTournamentSimulation();
