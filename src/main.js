@@ -21,16 +21,11 @@ teamObjects.push(wyverns, menehune, knights, mules, lions, warriors, raptors, do
 //prettier-ignore
 teamNames.push("wyverns", "menehune", "knights", "mules", "lions", "warrios", "raptors", "dolphins");
 
-/* wyverns.addToLocalStorage();
-menehune.addToLocalStorage();
-knights.addToLocalStorage();
-mules.addToLocalStorage();
-lions.addToLocalStorage();
-warriors.addToLocalStorage();
-raptors.addToLocalStorage();
-dolphins.addToLocalStorage(); */
-
 export const main = {
+  init() {
+    this.updateLocalStorage();
+  },
+
   getContenders() {
     for (var teamObject of teamObjects) {
       const teamLS = teamObject.getFromLocalStorage();
@@ -41,8 +36,20 @@ export const main = {
     }
     return contenders;
   },
+
+  updateLocalStorage() {
+    wyverns.addToLocalStorage();
+    menehune.addToLocalStorage();
+    knights.addToLocalStorage();
+    mules.addToLocalStorage();
+    lions.addToLocalStorage();
+    warriors.addToLocalStorage();
+    raptors.addToLocalStorage();
+    dolphins.addToLocalStorage();
+  },
 };
 
+//main.init();
 main.getContenders();
 bracket.init();
 

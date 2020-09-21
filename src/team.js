@@ -136,6 +136,7 @@ export const app = {
     //prettier-ignore
     const newTeam = new Team(name, city, strength, speed, agility, endurance, rating);
     newTeam.addIcon();
+    newTeam.points = 0;
     return newTeam;
   },
 
@@ -144,6 +145,7 @@ export const app = {
     const teamRating = newTeam.calculateRating();
     newTeam.rating = teamRating;
     newTeam.addIcon();
+    newTeam.points = 0;
     return newTeam;
   },
 
@@ -155,6 +157,7 @@ export const app = {
     newTeam.endurance = newTeam.calculateStats(teamRating)[0];
     newTeam.rating = teamRating;
     newTeam.addIcon();
+    newTeam.points = 0;
     return newTeam;
   },
 

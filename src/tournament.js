@@ -5,8 +5,8 @@ import { Team } from "./team.js";
 export const tournament = {
   playGame(team1, team2) {
     // Both Teams Start With 0 Points
-    let team1_score = 0;
-    let team2_score = 0;
+    let team1_score = team1.points;
+    let team2_score = team2.points;
 
     // Print out initial scores of teams
     console.log(team1.name + " Score: " + team1_score);
@@ -15,8 +15,8 @@ export const tournament = {
     // Add Scores For Each Team. Each team has 4 tries to score.
     for (let i = 1; i < 5; i++) {
       console.log("\nQuarter " + i);
-      let score_1 = this.scoreAttempt(team1.rating, team1_score);
-      let score_2 = this.scoreAttempt(team2.rating, team2_score);
+      let score_1 = this.scoreAttempt(team1.rating, team1.points);
+      let score_2 = this.scoreAttempt(team2.rating, team2.points);
       team1_score += score_1;
       team2_score += score_2;
       console.log(team1.name + ": " + team1_score);
@@ -27,6 +27,7 @@ export const tournament = {
     console.log(team1.name + " Updated Score: " + team1_score);
     console.log(team2.name + " Updated Score: " + team2_score);
 
+    //Return the Winner!
     if (team1_score != team2_score) {
       const winner = this.returnWinner(team1, team1_score, team2, team2_score);
       return winner;
@@ -48,24 +49,20 @@ export const tournament = {
   },
 
   scoreAttempt(teamRating, teamScore) {
-    var min = 50;
+    var min = teamRating - 20;
     var max = teamRating + 10;
     var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     console.log(randomNumber);
-    if (randomNumber > teamRating) {
-      teamScore += 2;
-      return teamScore;
-    }
     if (randomNumber >= 79) {
-      teamScore += 6;
+      teamScore += 10;
       return teamScore;
     }
     if (randomNumber >= 70 && randomNumber < 79) {
-      teamScore += 3;
+      teamScore += 6;
       return teamScore;
     }
     if (randomNumber >= 60 && randomNumber < 70) {
-      teamScore += 2;
+      teamScore += 4;
       return teamScore;
     }
     if (randomNumber <= 59) {
