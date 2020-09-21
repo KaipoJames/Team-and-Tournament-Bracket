@@ -47,14 +47,43 @@ export const main = {
     raptors.addToLocalStorage();
     dolphins.addToLocalStorage();
   },
+
+  runTournamentSimulation() {
+    const teamOne = contenders[0].getFromLocalStorage();
+    const teamTwo = contenders[1].getFromLocalStorage();
+    const teamThree = contenders[2].getFromLocalStorage();
+    const teamFour = contenders[3].getFromLocalStorage();
+    const teamFive = contenders[4].getFromLocalStorage();
+    const teamSix = contenders[5].getFromLocalStorage();
+    const teamSeven = contenders[6].getFromLocalStorage();
+    const teamEight = contenders[7].getFromLocalStorage();
+
+    const winner1 = Tournament.playGame(teamOne, teamTwo);
+    const winner2 = Tournament.playGame(teamThree, teamFour);
+    const winner3 = Tournament.playGame(teamFive, teamSix);
+    const winner4 = Tournament.playGame(teamSeven, teamEight);
+
+    const semiWinner1 = Tournament.playGame(winner1, winner2);
+    const semiWinner2 = Tournament.playGame(winner3, winner4);
+
+    const finalWinner = Tournament.playGame(semiWinner1, semiWinner2);
+
+    console.log("\nSemi-Finals!");
+    console.log("WINNER 1: " + winner1.name + "!");
+    console.log("WINNER 2: " + winner2.name + "!");
+    console.log("WINNER 3: " + winner3.name + "!");
+    console.log("WINNER 4: " + winner4.name + "!");
+
+    console.log("\nFinals!");
+    console.log("WINNER 1: " + semiWinner1.name + "!");
+    console.log("WINNER 2: " + semiWinner2.name + "!");
+
+    console.log("Champion!!!");
+    console.log("WINNER 1: " + finalWinner.name + "!");
+  },
 };
 
 //main.init();
 main.getContenders();
 bracket.init();
-
-const wyvernsData = contenders[0].getFromLocalStorage();
-const menehuneData = contenders[1].getFromLocalStorage();
-const winner = Tournament.playGame(wyvernsData, menehuneData);
-
-console.log("WINNER: " + winner.name + "!");
+main.runTournamentSimulation();
