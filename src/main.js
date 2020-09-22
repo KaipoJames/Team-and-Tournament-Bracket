@@ -24,14 +24,14 @@ const dolphins = app.createTeam2("dolphins", "waikele", 69); */
 export const main = {
 
   chooseTeams(team1, team2, team3, team4, team5, team6, team7, team8) {
-    const team_1 = app.createTeam2(team1, "manoa", 70);
-    const team_2 = app.createTeam2(team2, "mililani", 78);
+    const team_1 = app.createTeam2(team1, "manoa", 72);
+    const team_2 = app.createTeam2(team2, "mililani", 77);
     const team_3 = app.createTeam2(team3, "castle", 72);
-    const team_4 = app.createTeam2(team4, "leilehua", 79);
+    const team_4 = app.createTeam2(team4, "leilehua", 76);
     const team_5 = app.createTeam2(team5, "kailua", 76);
     const team_6 = app.createTeam2(team6, "kalihi", 75);
     const team_7 = app.createTeam2(team7, "radford", 73);
-    const team_8 = app.createTeam2(team8, "waikele", 69);
+    const team_8 = app.createTeam2(team8, "waikele", 77);
     teamObjects.push(team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8);
     this.updateLocalStorage(teamObjects);
   },
@@ -83,7 +83,7 @@ export const main = {
     console.log("WINNER 1: " + semiWinner1.name + "!");
     console.log("WINNER 2: " + semiWinner2.name + "!");
 
-    console.log("Champion!!!");
+    console.log("\nChampion!!!");
     console.log("WINNER 1: " + finalWinner.name + "!");
   },
 };
