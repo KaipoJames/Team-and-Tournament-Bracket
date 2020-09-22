@@ -69,4 +69,9 @@ export const tournament = {
     console.log("WINNER 1: " + finalWinner.name + "!");
     return finalWinner;
   },
+
+  postGameAddClasses(winner, loser) {
+    winner.classList.add("winner");
+    loser.classList.add("defeated");
+  },
 };

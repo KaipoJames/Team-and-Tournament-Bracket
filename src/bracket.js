@@ -114,12 +114,21 @@ const Bracket_Content = {
     return contenders;
   },
   iterate(i, array) {
+    array[i].currentCell = cells[i];
+    console.log(array[i].name + ": " + array[i].currentCell);
     this.addContentToBracket(
       cells[i],
       array[i].name.charAt(0).toUpperCase() + array[i].name.slice(1),
       array[i].rating,
       array[i].src
     );
+  },
+
+  postGameAddClasses(winner, loser) {
+    let winnerCell = winner.currentCell;
+    let loserCell = loser.currentCell;
+    console.log("winnerCell: " + winnerCell);
+    console.log("loserCell: " + loserCell);
   },
 };
 

@@ -1,3 +1,5 @@
+import { Bracket_Content } from "./bracket.js";
+
 export const Game = {
   init() {
     console.log("Game Object Initialized");
@@ -66,6 +68,12 @@ export const Game = {
   },
 
   returnWinner(team1, team1_Score, team2, team2_Score) {
+    if (team1_Score > team2_Score) {
+      Bracket_Content.postGameAddClasses(team1, team2);
+    }
+    if (team2_Score > team1_Score) {
+      Bracket_Content.postGameAddClasses(team2, team1);
+    }
     if (team1_Score > team2_Score) {
       return team1;
     } else {
