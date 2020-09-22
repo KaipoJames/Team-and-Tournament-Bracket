@@ -133,6 +133,7 @@ main {
 }
 .winner{
   color: rgb(52, 151, 52);
+  text-decoration: none;
 }
 
 /* TODO

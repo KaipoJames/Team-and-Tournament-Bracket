@@ -39,6 +39,7 @@ const Bracket_Canvas = {
     }
     cells.push(cell);
   },
+
   addBracketsToContainers() {
     for (let i = 0; i < 8; i++) {
       this.createSingleBracket(startingContainer);
@@ -51,6 +52,7 @@ const Bracket_Canvas = {
     }
     this.createSingleBracket(finalsContainer);
   },
+
   addVerticalLines() {
     let c = 1;
     for (const cell of cells) {
@@ -107,15 +109,20 @@ const Bracket_Content = {
       }
     }
   },
+
   getContentfromMain() {
     let contenders = Main.getContenders();
     //remove duplicates
     contenders = contenders.splice(8);
+    for (let i = 0; i < contenders.length; i++) {
+      contenders[i].currentCell = cells[i];
+    }
     return contenders;
   },
+
   iterate(i, array) {
-    array[i].currentCell = cells[i];
-    console.log(array[i].name + ": " + array[i].currentCell);
+    //array[i].currentCell = cells[i];
+    //console.log("objectInfo: " + array[i].currentCell.children);
     this.addContentToBracket(
       cells[i],
       array[i].name.charAt(0).toUpperCase() + array[i].name.slice(1),
@@ -125,11 +132,16 @@ const Bracket_Content = {
   },
 
   postGameAddClasses(winner, loser) {
+    console.log(winner);
     let winnerCell = winner.currentCell;
     let loserCell = loser.currentCell;
-    console.log("winnerCell: " + winnerCell);
-    console.log("loserCell: " + loserCell);
+    console.log("winnerCell: " + winnerCell.children);
+    console.log("loserCell: " + loserCell.children);
+    winnerCell.children[1].classList.add("winner");
+    loserCell.children[1].classList.add("defeated");
   },
+
+  advanceToSemis(winners) {},
 };
 
 const bracket = {};
