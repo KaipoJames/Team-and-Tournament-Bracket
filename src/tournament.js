@@ -7,11 +7,9 @@ export const tournament = {
     // Both Teams Start With 0 Points
     let team1_score = team1.points;
     let team2_score = team2.points;
-
     // Print out initial scores of teams
     console.log(team1.name + " Score: " + team1_score);
     console.log(team2.name + " Score: " + team2_score);
-
     // Add Scores For Each Team. Each team has 4 tries to score.
     for (let i = 1; i < 5; i++) {
       console.log("\nQuarter " + i);
@@ -22,11 +20,9 @@ export const tournament = {
       console.log(team1.name + ": " + team1_score);
       console.log(team2.name + ": " + team2_score);
     }
-
     //Print the final Results
     console.log(team1.name + " Updated Score: " + team1_score);
     console.log(team2.name + " Updated Score: " + team2_score);
-
     //Return the Winner!
     if (team1_score != team2_score) {
       const winner = this.returnWinner(team1, team1_score, team2, team2_score);

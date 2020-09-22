@@ -8,11 +8,11 @@ const finalsContainer = document.querySelector(".finals-container");
 
 let cells = [];
 
-export const bracket = {
+// This Object handles Drawing the Canvas of the bracket. Permanent Objects.
+const Bracket_Canvas = {
   init() {
     this.addBracketsToContainers();
     this.addVerticalLines();
-    this.initializeTeams();
   },
 
   createSingleBracket(container) {
@@ -39,20 +39,6 @@ export const bracket = {
     }
     cells.push(cell);
   },
-
-  addContentToBracket(cell, name, rating, logo) {
-    //console.log(cell.children);
-    for (let i = 0; i < cell.children.length; i++) {
-      if (cell.children[i].className == "team-name") {
-        cell.children[i].innerHTML = name;
-      } else if (cell.children[i].className == "team-rating") {
-        cell.children[i].innerHTML = rating;
-      } else if (cell.children[i].className == "team-logo") {
-        cell.children[i].src = logo;
-      }
-    }
-  },
-
   addBracketsToContainers() {
     for (let i = 0; i < 8; i++) {
       this.createSingleBracket(startingContainer);
@@ -65,34 +51,6 @@ export const bracket = {
     }
     this.createSingleBracket(finalsContainer);
   },
-
-  getContentfromMain() {
-    let contenders = Main.getContenders();
-    //remove duplicates
-    contenders = contenders.splice(8);
-    return contenders;
-  },
-
-  iterate(i, array) {
-    this.addContentToBracket(
-      cells[i],
-      array[i].name.charAt(0).toUpperCase() + array[i].name.slice(1),
-      array[i].rating,
-      array[i].src
-    );
-  },
-
-  initializeTeams() {
-    const contenders = this.getContentfromMain();
-    cells.splice(8);
-    //console.log(cells.length);
-    let i = 0;
-    for (let j = 0; j < 8; j++) {
-      this.iterate(i, contenders);
-      i++;
-    }
-  },
-
   addVerticalLines() {
     let c = 1;
     for (const cell of cells) {
@@ -119,3 +77,52 @@ export const bracket = {
     }
   },
 };
+
+// Bracket Object To Handle Temporary Changes To Bracket
+const Bracket_Content = {
+  init() {
+    this.initializeTeams();
+  },
+
+  initializeTeams() {
+    const contenders = this.getContentfromMain();
+    cells.splice(8);
+    //console.log(cells.length);
+    let i = 0;
+    for (let j = 0; j < 8; j++) {
+      this.iterate(i, contenders);
+      i++;
+    }
+  },
+
+  addContentToBracket(cell, name, rating, logo) {
+    //console.log(cell.children);
+    for (let i = 0; i < cell.children.length; i++) {
+      if (cell.children[i].className == "team-name") {
+        cell.children[i].innerHTML = name;
+      } else if (cell.children[i].className == "team-rating") {
+        cell.children[i].innerHTML = rating;
+      } else if (cell.children[i].className == "team-logo") {
+        cell.children[i].src = logo;
+      }
+    }
+  },
+  getContentfromMain() {
+    let contenders = Main.getContenders();
+    //remove duplicates
+    contenders = contenders.splice(8);
+    return contenders;
+  },
+  iterate(i, array) {
+    this.addContentToBracket(
+      cells[i],
+      array[i].name.charAt(0).toUpperCase() + array[i].name.slice(1),
+      array[i].rating,
+      array[i].src
+    );
+  },
+};
+
+const bracket = {};
+
+export { bracket, Bracket_Canvas, Bracket_Content };

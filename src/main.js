@@ -1,5 +1,5 @@
 import { Team, app } from "./team.js";
-import { bracket } from "./bracket.js";
+import { Bracket_Canvas, Bracket_Content } from "./bracket.js";
 import { tournament as Tournament } from "./tournament.js";
 
 const teamObjects = [];
@@ -101,5 +101,6 @@ main.chooseTeams(
   "menehune"
 );
 main.getContenders();
-bracket.init();
+Bracket_Canvas.init();
+Bracket_Content.init();
 main.runTournamentSimulation();
