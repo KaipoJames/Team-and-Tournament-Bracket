@@ -1,6 +1,6 @@
 import { Team, app } from "./team.js";
 import { Bracket_Canvas, Bracket_Content } from "./bracket.js";
-import { tournament as Tournament } from "./tournament.js";
+import { game as Game } from "./game.js";
 
 const teamObjects = [];
 const teamNames = [];
@@ -63,15 +63,15 @@ export const main = {
     const teamSeven = contenders[6].getFromLocalStorage();
     const teamEight = contenders[7].getFromLocalStorage();
 
-    const winner1 = Tournament.playGame(teamOne, teamTwo);
-    const winner2 = Tournament.playGame(teamThree, teamFour);
-    const winner3 = Tournament.playGame(teamFive, teamSix);
-    const winner4 = Tournament.playGame(teamSeven, teamEight);
+    const winner1 = Game.playGame(teamOne, teamTwo);
+    const winner2 = Game.playGame(teamThree, teamFour);
+    const winner3 = Game.playGame(teamFive, teamSix);
+    const winner4 = Game.playGame(teamSeven, teamEight);
 
-    const semiWinner1 = Tournament.playGame(winner1, winner2);
-    const semiWinner2 = Tournament.playGame(winner3, winner4);
+    const semiWinner1 = Game.playGame(winner1, winner2);
+    const semiWinner2 = Game.playGame(winner3, winner4);
 
-    const finalWinner = Tournament.playGame(semiWinner1, semiWinner2);
+    const finalWinner = Game.playGame(semiWinner1, semiWinner2);
 
     console.log("\nSemi-Finals!");
     console.log("WINNER 1: " + winner1.name + "!");

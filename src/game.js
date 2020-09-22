@@ -2,7 +2,7 @@ import { main as Main } from "./main.js";
 import { bracket as Bracket } from "./bracket.js";
 import { Team } from "./team.js";
 
-export const tournament = {
+export const game = {
   playGame(team1, team2) {
     // Both Teams Start With 0 Points
     let team1_score = team1.points;
