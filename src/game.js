@@ -1,8 +1,7 @@
-import { main as Main } from "./main.js";
-import { bracket as Bracket } from "./bracket.js";
-import { Team } from "./team.js";
-
-export const game = {
+export const Game = {
+  init() {
+    console.log("Game Object Initialized");
+  },
   playGame(team1, team2) {
     // Both Teams Start With 0 Points
     let team1_score = team1.points;

@@ -1,6 +1,7 @@
 import { Team, app } from "./team.js";
 import { Bracket_Canvas, Bracket_Content } from "./bracket.js";
-import { game as Game } from "./game.js";
+import { Game } from "./game.js";
+import { tournament as Tournament } from "./tournament.js";
 
 const teamObjects = [];
 const teamNames = [];
@@ -53,39 +54,6 @@ export const main = {
     }
   },
 
-  runTournamentSimulation() {
-    const teamOne = contenders[0].getFromLocalStorage();
-    const teamTwo = contenders[1].getFromLocalStorage();
-    const teamThree = contenders[2].getFromLocalStorage();
-    const teamFour = contenders[3].getFromLocalStorage();
-    const teamFive = contenders[4].getFromLocalStorage();
-    const teamSix = contenders[5].getFromLocalStorage();
-    const teamSeven = contenders[6].getFromLocalStorage();
-    const teamEight = contenders[7].getFromLocalStorage();
-
-    const winner1 = Game.playGame(teamOne, teamTwo);
-    const winner2 = Game.playGame(teamThree, teamFour);
-    const winner3 = Game.playGame(teamFive, teamSix);
-    const winner4 = Game.playGame(teamSeven, teamEight);
-
-    const semiWinner1 = Game.playGame(winner1, winner2);
-    const semiWinner2 = Game.playGame(winner3, winner4);
-
-    const finalWinner = Game.playGame(semiWinner1, semiWinner2);
-
-    console.log("\nSemi-Finals!");
-    console.log("WINNER 1: " + winner1.name + "!");
-    console.log("WINNER 2: " + winner2.name + "!");
-    console.log("WINNER 3: " + winner3.name + "!");
-    console.log("WINNER 4: " + winner4.name + "!");
-
-    console.log("\nFinals!");
-    console.log("WINNER 1: " + semiWinner1.name + "!");
-    console.log("WINNER 2: " + semiWinner2.name + "!");
-
-    console.log("\nChampion!!!");
-    console.log("WINNER 1: " + finalWinner.name + "!");
-  },
 };
 
 //main.init();
@@ -101,6 +69,12 @@ main.chooseTeams(
   "menehune"
 );
 main.getContenders();
+
+// Draw The Canvas
 Bracket_Canvas.init();
+
+// Initialize Teams
 Bracket_Content.init();
-main.runTournamentSimulation();
+
+// Run The Simulation
+Tournament.init();
