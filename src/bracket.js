@@ -168,7 +168,7 @@ export const Bracket_Content = {
     //console.log("objectInfo: " + array[i].currentCell.children);
     this.addContentToBracket(
       cells[i],
-      array[i].name.charAt(0).toUpperCase() + array[i].name.slice(1),
+      array[i].name,
       array[i].rating,
       array[i].src
     );
