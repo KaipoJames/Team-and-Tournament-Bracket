@@ -105,9 +105,10 @@ export const Bracket_Content = {
 
   addContentToBracket(cell, name, rating, logo) {
     //console.log(cell.children);
+    const capitalized = name.charAt(0).toUpperCase() + name.slice(1);
     for (let i = 0; i < cell.children.length; i++) {
       if (cell.children[i].className == "team-name") {
-        cell.children[i].innerHTML = name;
+        cell.children[i].innerHTML = capitalized;
       } else if (cell.children[i].className == "team-rating") {
         cell.children[i].innerHTML = rating;
       } else if (cell.children[i].className == "team-logo") {
@@ -124,6 +125,7 @@ export const Bracket_Content = {
     //prettier-ignore
     quarterCells.push(quarter_cell_1,quarter_cell_2,quarter_cell_3,quarter_cell_4);
     for (let i = 0; i < quarterCells.length; i++) {
+      winners[i].currentCell = quarterCells[i];
       //console.log(quarterCells[i]);
       //prettier-ignore
       this.addContentToBracket(quarterCells[i], winners[i].name, winners[i].rating, winners[i].src);
@@ -136,6 +138,7 @@ export const Bracket_Content = {
     //prettier-ignore
     semiCells.push(semi_cell_1,semi_cell_2);
     for (let i = 0; i < semiCells.length; i++) {
+      winners[i].currentCell = semiCells[i];
       //console.log(semiCells[i]);
       //prettier-ignore
       this.addContentToBracket(semiCells[i], winners[i].name, winners[i].rating, winners[i].src);
@@ -144,6 +147,8 @@ export const Bracket_Content = {
 
   displayChampion(winner) {
     const final_cell_1 = finalsContainer.children[0];
+    winner.currentCell = final_cell_1;
+    final_cell_1.classList.add("winner");
     //prettier-ignore
     this.addContentToBracket(final_cell_1, winner.name, winner.rating, winner.src);
   },

@@ -32,11 +32,13 @@ export const main = {
     const team_7 = app.createTeam2(team7, "radford", 73);
     const team_8 = app.createTeam2(team8, "waikele", 77);
     teamObjects.push(team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8);
+    //Store new Data Inside Local Storage
     this.updateLocalStorage(teamObjects);
   },
 
   getContenders() {
     for (var teamObject of teamObjects) {
+      //Get The New Data From Local Storage
       const teamLS = teamObject.getFromLocalStorage();
       //prettier-ignore
       const teamObj = app.createTeam(teamLS.name, teamLS.city, teamLS.strength, teamLS.speed, teamLS.agility, teamLS.endurance, teamLS.rating)
@@ -57,13 +59,13 @@ export const main = {
 //main.init();
 
 main.chooseTeams(
-  "wyverns",
-  "dolphins",
-  "knights",
+  "lunas",
+  "bulldogs",
   "mules",
-  "warriors",
+  "sharks",
+  "wyverns",
+  "cougars",
   "lions",
-  "raptors",
   "menehune"
 );
 main.getContenders();
