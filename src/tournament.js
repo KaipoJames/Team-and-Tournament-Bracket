@@ -14,7 +14,6 @@ export const tournament = {
     const semiFinalists = this.playSemiFinals(quarterFinalists);
     const champion = this.playFinals(semiFinalists);
     winner += champion.name;
-    console.log("WINNER: " + winner);
   },
 
   getContenders() {
@@ -38,6 +37,7 @@ export const tournament = {
     const winner3 = Game.playGame(teamFive, teamSix);
     const winner4 = Game.playGame(teamSeven, teamEight);
     winners.push(winner1, winner2, winner3, winner4);
+    Bracket_Content.advanceToSemis(winners);
     console.log("\nSemi-Finals!");
     console.log("WINNER 1: " + winner1.name + "!");
     console.log("WINNER 2: " + winner2.name + "!");
@@ -45,6 +45,7 @@ export const tournament = {
     console.log("WINNER 4: " + winner4.name + "!");
     return winners;
   },
+
   playSemiFinals(semi_contenders) {
     const semi_winners = [];
     const teamOne = semi_contenders[0];
@@ -55,18 +56,21 @@ export const tournament = {
     const semiWinner1 = Game.playGame(teamOne, teamTwo);
     const semiWinner2 = Game.playGame(teamThree, teamFour);
     semi_winners.push(semiWinner1, semiWinner2);
+    Bracket_Content.advanceToFinals(semi_winners);
     console.log("\nFinals!");
     console.log("WINNER 1: " + semiWinner1.name + "!");
     console.log("WINNER 2: " + semiWinner2.name + "!");
     return semi_winners;
   },
+
   playFinals(finals_contenders) {
     const finalWinner = Game.playGame(
       finals_contenders[0],
       finals_contenders[1]
     );
+    Bracket_Content.displayChampion(finalWinner);
     console.log("\nChampion!!!");
-    console.log("WINNER 1: " + finalWinner.name + "!");
+    console.log("WINNER: " + finalWinner.name + "!");
     return finalWinner;
   },
 };

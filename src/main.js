@@ -1,10 +1,8 @@
-import { Team, app } from "./team.js";
+import { app } from "./team.js";
 import { Bracket_Canvas, Bracket_Content } from "./bracket.js";
-import { Game } from "./game.js";
 import { tournament as Tournament } from "./tournament.js";
 
 const teamObjects = [];
-const teamNames = [];
 const contenders = [];
 
 // name, city, rating, strength, speed, agility, endurance
@@ -72,9 +70,7 @@ main.getContenders();
 
 // Draw The Canvas
 Bracket_Canvas.init();
-
 // Initialize Teams
 Bracket_Content.init();
-
 // Run The Simulation
 Tournament.init();

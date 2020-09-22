@@ -7,9 +7,12 @@ const semiFinalsContainer = document.querySelector(".semi-finals-container");
 const finalsContainer = document.querySelector(".finals-container");
 
 let cells = [];
+let cellsCopy;
+let quarterCells = [];
+let semiCells = [];
 
 // This Object handles Drawing the Canvas of the bracket. Permanent Objects.
-const Bracket_Canvas = {
+export const Bracket_Canvas = {
   init() {
     this.addBracketsToContainers();
     this.addVerticalLines();
@@ -81,13 +84,16 @@ const Bracket_Canvas = {
 };
 
 // Bracket Object To Handle Temporary Changes To Bracket
-const Bracket_Content = {
+export const Bracket_Content = {
   init() {
     this.initializeTeams();
+    //this.advanceToSemis("testRun");
   },
 
   initializeTeams() {
     const contenders = this.getContentfromMain();
+    cellsCopy = cells.splice();
+    console.log("cellsCopy: " + cellsCopy);
     cells.splice(8);
     //console.log(cells.length);
     let i = 0;
@@ -108,6 +114,38 @@ const Bracket_Content = {
         cell.children[i].src = logo;
       }
     }
+  },
+
+  advanceToSemis(winners) {
+    const quarter_cell_1 = quarterFinalsContainer.children[0];
+    const quarter_cell_2 = quarterFinalsContainer.children[1];
+    const quarter_cell_3 = quarterFinalsContainer.children[2];
+    const quarter_cell_4 = quarterFinalsContainer.children[3];
+    //prettier-ignore
+    quarterCells.push(quarter_cell_1,quarter_cell_2,quarter_cell_3,quarter_cell_4);
+    for (let i = 0; i < quarterCells.length; i++) {
+      //console.log(quarterCells[i]);
+      //prettier-ignore
+      this.addContentToBracket(quarterCells[i], winners[i].name, winners[i].rating, winners[i].src);
+    }
+  },
+
+  advanceToFinals(winners) {
+    const semi_cell_1 = semiFinalsContainer.children[0];
+    const semi_cell_2 = semiFinalsContainer.children[1];
+    //prettier-ignore
+    semiCells.push(semi_cell_1,semi_cell_2);
+    for (let i = 0; i < semiCells.length; i++) {
+      //console.log(semiCells[i]);
+      //prettier-ignore
+      this.addContentToBracket(semiCells[i], winners[i].name, winners[i].rating, winners[i].src);
+    }
+  },
+
+  displayChampion(winner) {
+    const final_cell_1 = finalsContainer.children[0];
+    //prettier-ignore
+    this.addContentToBracket(final_cell_1, winner.name, winner.rating, winner.src);
   },
 
   getContentfromMain() {
@@ -132,18 +170,11 @@ const Bracket_Content = {
   },
 
   postGameAddClasses(winner, loser) {
-    console.log(winner);
     let winnerCell = winner.currentCell;
     let loserCell = loser.currentCell;
-    console.log("winnerCell: " + winnerCell.children);
-    console.log("loserCell: " + loserCell.children);
+    //console.log("winnerCell: " + winnerCell.children);
+    //console.log("loserCell: " + loserCell.children);
     winnerCell.children[1].classList.add("winner");
     loserCell.children[1].classList.add("defeated");
   },
-
-  advanceToSemis(winners) {},
 };
-
-const bracket = {};
-
-export { bracket, Bracket_Canvas, Bracket_Content };
