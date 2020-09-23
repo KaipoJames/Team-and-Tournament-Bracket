@@ -1,5 +1,5 @@
-import { functions as Functions } from "./functions.js";
-import { playerFactory } from "./player.js";
+import { functions as Functions } from "../functions.js";
+import { playerFactory } from "../main_objects/player.js";
 
 //Create an instance of the firebase realtime database
 var database = firebase.database();

@@ -1,4 +1,4 @@
-import { main as Main } from "./main.js";
+import { main as Main } from "../main.js";
 
 const startingContainer = document.querySelector(".starting-container");
 //prettier-ignore

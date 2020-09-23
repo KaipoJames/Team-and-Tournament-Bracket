@@ -1,8 +1,8 @@
-import { app } from "./team.js";
-import { Bracket_Canvas, Bracket_Content } from "./bracket.js";
-import { tournament as Tournament } from "./tournament.js";
+import { app } from "./main_objects/team.js";
+import { Bracket_Canvas, Bracket_Content } from "./main_objects/bracket.js";
+import { tournament as Tournament } from "./main_objects/tournament.js";
 //import { functions as Functions } from "./functions.js";
-import { firebaseObj as FirebaseObj } from "./database.js";
+import { firebaseObj as FirebaseObj } from "./database/database.js";
 
 const startSimulationBtn = document.querySelector(".simulate");
 
