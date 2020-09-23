@@ -1,7 +1,8 @@
-import { Bracket_Content } from "./bracket.js";
+import { Bracket_Content, cells } from "./bracket.js";
 
 export const Game = {
   init() {
+    console.log("cells: " + cells);
     console.log("Game Object Initialized");
   },
   playGame(team1, team2) {

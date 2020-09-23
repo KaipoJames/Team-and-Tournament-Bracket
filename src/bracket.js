@@ -6,7 +6,7 @@ const quarterFinalsContainer = document.querySelector(".quarter-finals-container
 const semiFinalsContainer = document.querySelector(".semi-finals-container");
 const finalsContainer = document.querySelector(".finals-container");
 
-let cells = [];
+export let cells = [];
 let cellsCopy;
 let quarterCells = [];
 let semiCells = [];
@@ -24,12 +24,15 @@ export const Bracket_Canvas = {
     const teamName = document.createElement("h2");
     const teamRating = document.createElement("p");
     const teamLogo = document.createElement("img");
+    const teamScore = document.createElement("div");
     teamName.classList.add("team-name");
     teamRating.classList.add("team-rating");
     teamLogo.classList.add("team-logo");
+    teamScore.classList.add("team-score");
     cell.appendChild(teamRating);
     cell.appendChild(teamName);
     cell.appendChild(teamLogo);
+    cell.appendChild(teamScore);
 
     container.appendChild(cell);
 
@@ -86,14 +89,16 @@ export const Bracket_Canvas = {
 // Bracket Object To Handle Temporary Changes To Bracket
 export const Bracket_Content = {
   init() {
+    cellsCopy = cells.splice();
+    //console.log("cellsCopy: " + cellsCopy);
     this.initializeTeams();
+
     //this.advanceToSemis("testRun");
   },
 
   initializeTeams() {
     const contenders = this.getContentfromMain();
-    cellsCopy = cells.splice();
-    console.log("cellsCopy: " + cellsCopy);
+    //cellsCopy = cells.splice();
     cells.splice(8);
     //console.log(cells.length);
     let i = 0;
@@ -181,5 +186,11 @@ export const Bracket_Content = {
     //console.log("loserCell: " + loserCell.children);
     winnerCell.children[1].classList.add("winner");
     loserCell.children[1].classList.add("defeated");
+  },
+
+  getScoreDiv(cell) {
+    let scoreDiv = cell.children[3];
+    console.log(scoreDiv);
+    return scoreDiv;
   },
 };

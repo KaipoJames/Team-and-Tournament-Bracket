@@ -2,6 +2,8 @@ import { app } from "./team.js";
 import { Bracket_Canvas, Bracket_Content } from "./bracket.js";
 import { tournament as Tournament } from "./tournament.js";
 
+const startSimulationBtn = document.querySelector(".simulate");
+
 const teamObjects = [];
 const contenders = [];
 
@@ -54,6 +56,15 @@ export const main = {
     }
   },
 
+  addEventListeners() {
+    if (startSimulationBtn) {
+      startSimulationBtn.addEventListener("click", () => {
+        console.log("start button clicked!")
+        Tournament.init();
+      });
+    }
+  },
+
 };
 
 //main.init();
@@ -74,5 +85,7 @@ main.getContenders();
 Bracket_Canvas.init();
 // Initialize Teams
 Bracket_Content.init();
+
+main.addEventListeners();
 // Run The Simulation
-Tournament.init();
+//Tournament.init();

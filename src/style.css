@@ -21,10 +21,34 @@ header {
   min-height: 10vh;
   width: 100;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   font-size: 2.5rem;
 }
+.simulate{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  width: 9vw;
+  height: 6vh;
+  margin-top: 0.8rem;
+}
+.start-icon{
+  width: 3.2rem;
+  height: auto;
+}
+.start{
+  margin-left: 0rem;
+  color: rgb(0, 196, 168);
+}
+.simulate:hover{
+  background: rgb(235, 235, 235);
+  cursor: pointer;
+}
+
 main {
   min-height: 90vh;
   width: 100%;
@@ -126,6 +150,17 @@ main {
   height: auto;
   position: absolute;
   right: 0.5rem;
+}
+.team-score{
+  width: 3.8rem;
+  height: 3.8rem;
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid black;
+  right: -5rem;
+  top: 0.4rem;
+  z-index: 1;
 }
 
 .defeated{
