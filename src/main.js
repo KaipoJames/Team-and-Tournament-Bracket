@@ -1,6 +1,8 @@
 import { app } from "./team.js";
 import { Bracket_Canvas, Bracket_Content } from "./bracket.js";
 import { tournament as Tournament } from "./tournament.js";
+//import { functions as Functions } from "./functions.js";
+import { firebaseObj as FirebaseObj } from "./database.js";
 
 const startSimulationBtn = document.querySelector(".simulate");
 
@@ -57,11 +59,12 @@ export const main = {
   },
 
   addEventListeners() {
+    //Start Simulation
     if (startSimulationBtn) {
       startSimulationBtn.addEventListener("click", () => {
-        console.log("start button clicked!")
+        console.log("start button clicked!");
         Tournament.init();
-      });
+      }, {once: true});
     }
   },
 
@@ -87,5 +90,5 @@ Bracket_Canvas.init();
 Bracket_Content.init();
 
 main.addEventListeners();
-// Run The Simulation
-//Tournament.init();
+
+FirebaseObj.init();

@@ -5,6 +5,7 @@ export const Game = {
     console.log("cells: " + cells);
     console.log("Game Object Initialized");
   },
+
   playGame(team1, team2) {
     // Both Teams Start With 0 Points
     let team1_score = team1.points;
@@ -36,12 +37,16 @@ export const Game = {
         team1_score += 5;
         console.log(team1.name + " Final Score: " + team1_score);
         console.log(team2.name + " Final Score: " + team2_score);
-        return team1;
+        //prettier-ignore
+        const winner = this.returnWinner(team1, team1_score, team2, team2_score);
+        return winner;
       } else {
         team2_score += 5;
         console.log(team1.name + " Final Score: " + team1_score);
         console.log(team2.name + " Final Score: " + team2_score);
-        return team2;
+        //prettier-ignore
+        const winner = this.returnWinner(team1, team1_score, team2, team2_score);
+        return winner;
       }
     }
   },

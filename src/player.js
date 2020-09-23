@@ -1,11 +1,16 @@
+import { app as App } from "./team.js";
+
 class Player {
-  constructor(name, rating, strength, speed, agility, endurance) {
-    this.name = name;
+  //prettier-ignore
+  constructor(firstName, lastName, rating, strength, speed, agility, endurance, currentTeam) {
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.rating = rating;
     this.strength = strength;
     this.speed = speed;
     this.agility = agility;
     this.endurance = endurance;
+    this.currentTeam = currentTeam;
   }
 
   train(trait) {
@@ -30,4 +35,42 @@ class Player {
       console.log(`Good training session. Keep it up to increase your stats!`);
     }
   }
+
+  calculateStats(rating) {
+    const stats = [];
+    var sum, average, strength, speed, agility, endurance;
+    var min = rating - Math.floor(Math.random() * 10);
+    var max = rating + Math.floor(Math.random() * 10);
+    while (true) {
+      strength = playerFactory.randomNumber(min, max);
+      speed = playerFactory.randomNumber(min, max);
+      agility = playerFactory.randomNumber(min, max);
+      endurance = playerFactory.randomNumber(min, max);
+      sum = strength + speed + agility + endurance;
+      average = sum / 4;
+      if (average == rating) {
+        stats.push(strength, speed, agility, endurance);
+        break;
+      }
+    }
+    return stats;
+  }
 }
+
+export const playerFactory = {
+  //prettier-ignore
+  createPlayer(firstName, lastName, rating) {
+    //prettier-ignore
+    const player = new Player(firstName, lastName, rating);
+    player.strength = player.calculateStats(rating)[0];
+    player.speed = player.calculateStats(rating)[0];
+    player.agility = player.calculateStats(rating)[0];
+    player.endurance = player.calculateStats(rating)[0];
+    player.currentTeam = "unassigned";
+    return player;
+  },
+
+  randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  },
+};
