@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulator | Add Player</title>
+    <link rel="stylesheet" href="../styles/form_styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="register-nav">
+        <a href="../start_screen/start.html" class="back-btn-box">
+          <img
+            class="back-btn"
+            src="/img/back-arrow.png"
+            alt="back-arrow-img"
+          />
+          <h3 class="back-btn-text">Back</h3>
+        </a>
+        <div class="nav-header-text">
+          <h3>Register Your Teams and Players!</h3>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="form-container">
+        <div class="register-container-buttons">
+          <div class="register-container-btn register-player-btn">
+            <a href="./register_player.html">Register Player</a>
+          </div>
+          <div class="register-container-btn register-team-btn">
+            <a href="./register_team.html">Register Team</a>
+          </div>
+        </div>
+        <div class="form-body">
+          <form action="./register_player.html">
+            Team Name:
+            <input type="text" name="team-name" required />
+            Team City:
+            <input type="text" name="city" required />
+            Team Rating:
+            <input type="number" name="rating" required />
+            <input class="submit-btn" type="submit" value="Register" />
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
