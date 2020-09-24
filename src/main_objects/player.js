@@ -1,5 +1,3 @@
-import { app as App } from "./team.js";
-
 class Player {
   //prettier-ignore
   constructor(firstName, lastName, rating, strength, speed, agility, endurance, currentTeam) {

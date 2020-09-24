@@ -18,7 +18,7 @@
           <h3 class="back-btn-text">Back</h3>
         </a>
         <div class="nav-header-text">
-          <h3>Register Your Teams and Players!</h3>
+          <h3>Register Your Players and Teams!</h3>
         </div>
       </nav>
     </header>
@@ -33,19 +33,46 @@
           </div>
         </div>
         <div class="form-body">
-          <form action="./register_player.html">
+          <form id="player-form" action="">
             First Name:
-            <input type="text" name="first-name" required />
+            <input id="first-name" type="text" name="first-name" required />
             Last Name:
-            <input type="text" name="last-name" required />
-            Team Rating:
-            <input type="number" name="rating" required />
-            <input class="submit-btn" type="submit" value="Register" />
+            <input id="last-name" type="text" name="last-name" required />
+            Player Rating:
+            <input id="player-rating" type="number" name="rating" required />
+            <input
+              id="player-submit-btn"
+              class="submit-btn"
+              type="button"
+              value="Register"
+            />
           </form>
         </div>
+        <h3 class="string-note"></h3>
       </div>
     </main>
 
-    <script src="./form.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyC0Eb466bboDpOypDVMR-wLONkx2I_SVfk",
+        authDomain: "tournament-bracket-simulator.firebaseapp.com",
+        databaseURL: "https://tournament-bracket-simulator.firebaseio.com",
+        projectId: "tournament-bracket-simulator",
+        storageBucket: "tournament-bracket-simulator.appspot.com",
+        messagingSenderId: "433313552285",
+        appId: "1:433313552285:web:57e4b188c13aab5d794174",
+        measurementId: "G-VHKVPLCFG1",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      //firebase.analytics();
+    </script>
+
+    <script type="module" src="./form.js"></script>
   </body>
 </html>

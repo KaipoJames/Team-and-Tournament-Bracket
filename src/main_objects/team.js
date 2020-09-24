@@ -32,10 +32,10 @@ export class Team {
     var min = rating - Math.floor(Math.random() * 10);
     var max = rating + Math.floor(Math.random() * 10);
     while (true) {
-      strength = app.randomNumber(min, max);
-      speed = app.randomNumber(min, max);
-      agility = app.randomNumber(min, max);
-      endurance = app.randomNumber(min, max);
+      strength = teamFactory.randomNumber(min, max);
+      speed = teamFactory.randomNumber(min, max);
+      agility = teamFactory.randomNumber(min, max);
+      endurance = teamFactory.randomNumber(min, max);
       sum = strength + speed + agility + endurance;
       average = sum / 4;
       if (average == rating) {
@@ -145,7 +145,7 @@ export class Team {
 }
 
 // Object containing Helper Methods
-export const app = {
+export const teamFactory = {
   createTeam(name, city, strength, speed, agility, endurance, rating) {
     //prettier-ignore
     const newTeam = new Team(name, city, strength, speed, agility, endurance, rating);
@@ -171,7 +171,7 @@ export const app = {
     newTeam.endurance = newTeam.calculateStats(teamRating)[0];
     newTeam.rating = teamRating;
     newTeam.addIcon();
-    newTeam.points = 0;
+    //newTeam.points = 0;
     return newTeam;
   },
 

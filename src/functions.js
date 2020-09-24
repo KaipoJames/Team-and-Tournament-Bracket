@@ -1,11 +1,18 @@
 export const functions = {
-  generateUniqueID() {
+  generatePlayerID() {
     const pre = this.generateMixedId().substr(2, 7);
     const prefix = Date.now();
     const mid = this.generateMixedId();
     const randomString = (Math.random() * 100).toFixed(10);
     const suffix = randomString.replace(".", "");
     const uniqueID = pre + "-" + prefix + "-" + mid + "-" + suffix;
+    return uniqueID;
+  },
+
+  generateTeamID() {
+    const pre = this.generateMixedId().substr(1, 5);
+    const post = Date.now();
+    const uniqueID = pre + "-" + post;
     return uniqueID;
   },
 

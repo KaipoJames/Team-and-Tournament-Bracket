@@ -136,6 +136,10 @@ form input {
   width: 5rem;
   align-self: center;
 }
+#player-submit-btn,
+#team-submit-btn {
+  cursor: pointer;
+}
 
 .selected-page {
   background: linear-gradient(
