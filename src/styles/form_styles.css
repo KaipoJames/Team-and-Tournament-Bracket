@@ -19,6 +19,7 @@ body {
   color: black;
   text-decoration: none;
   width: 5.5vw;
+  min-width: 5.5vw;
   height: 5vh;
   /* background: rgb(207, 133, 207); */
   background: linear-gradient(
@@ -136,6 +137,11 @@ form input {
   align-self: center;
 }
 
-.current-selected {
-  background: white;
+.selected-page {
+  background: linear-gradient(
+    175deg,
+    rgba(169, 167, 209, 1) 0%,
+    rgba(214, 154, 85, 1) 0%,
+    rgba(235, 220, 108, 1) 100%
+  );
 }
