@@ -1,14 +1,5 @@
 export class Team {
-  constructor(
-    name,
-    city,
-    strength,
-    speed,
-    agility,
-    endurance,
-    rating,
-    players = []
-  ) {
+  constructor(name, city, strength, speed, agility, endurance, rating) {
     this.name = name;
     this.city = city;
     this.strength = strength;
@@ -16,7 +7,6 @@ export class Team {
     this.agility = agility;
     this.endurance = endurance;
     this.rating = rating;
-    this.players = players;
   }
 
   calculateRating() {
