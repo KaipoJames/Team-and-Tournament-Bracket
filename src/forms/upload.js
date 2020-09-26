@@ -1,4 +1,4 @@
-import { teamName } from "./form.js";
+import { teamName, stringNote } from "./form.js";
 
 const fileUploader = document.querySelector("#file-upload");
 const progressBar = document.querySelector("#progress-bar");
@@ -31,6 +31,7 @@ export const upload = {
       },
       function complete() {
         console.log("File Upload Complete!");
+        stringNote.innerHTML = teamName.value + " is now registered!";
       }
     );
   },

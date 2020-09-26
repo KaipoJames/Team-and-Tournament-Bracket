@@ -146,6 +146,8 @@ form input {
 }
 #progress-bar[value]::-webkit-progress-value {
   background-color: rgb(101, 192, 214);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 .submit-btn {
   margin-top: 1rem;

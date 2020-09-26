@@ -18,7 +18,7 @@ export const teamName = document.getElementById("team-name");
 const teamCity = document.getElementById("team-city");
 const teamRating = document.getElementById("team-rating");
 
-const stringNote = document.querySelector(".string-note");
+export const stringNote = document.querySelector(".string-note");
 
 var currentURL = window.location.href;
 
@@ -82,7 +82,7 @@ export const formApp = {
     const team = TeamFactory.createTeam2(teamNameLower, teamCityLower, parseInt(teamRating.value));
     this.writeTeamToDatabase(team);
     Upload.uploadFile();
-    stringNote.innerHTML = team.name + " is now registered!";
+    //stringNote.innerHTML = team.name + " is now registered!";
   },
 
   writePlayerToDatabase(player) {
