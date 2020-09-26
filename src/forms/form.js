@@ -1,6 +1,7 @@
 import { playerFactory as PlayerFactory } from "../main_objects/player.js";
 import { teamFactory as TeamFactory } from "../main_objects/team.js";
 import { functions as Functions } from "../functions.js";
+import { upload as Upload } from "./upload.js";
 
 const registerPlayerBtn = document.querySelector(".register-player-btn");
 const registerTeamBtn = document.querySelector(".register-team-btn");
@@ -13,7 +14,7 @@ const lastName = document.getElementById("last-name");
 const playerRating = document.getElementById("player-rating");
 
 //Get Team Input Data
-const teamName = document.getElementById("team-name");
+export const teamName = document.getElementById("team-name");
 const teamCity = document.getElementById("team-city");
 const teamRating = document.getElementById("team-rating");
 
@@ -33,7 +34,7 @@ export const formApp = {
   init() {
     this.showActivePage();
     this.addEventListeners();
-    this.getPlayerNames();
+    //this.getPlayerNames();
     //this.getTeamNames();
   },
 
@@ -80,6 +81,8 @@ export const formApp = {
     //prettier-ignore
     const team = TeamFactory.createTeam2(teamNameLower, teamCityLower, parseInt(teamRating.value));
     this.writeTeamToDatabase(team);
+    Upload.uploadFile();
+    stringNote.innerHTML = team.name + " is now registered!";
   },
 
   writePlayerToDatabase(player) {
@@ -118,7 +121,7 @@ export const formApp = {
 
       });
     //console.log(team.name + " is now registered!");
-    stringNote.innerHTML = team.name + " is now registered!";
+    //stringNote.innerHTML = team.name + " is now registered!";
   },
 
   getPlayerNames() {

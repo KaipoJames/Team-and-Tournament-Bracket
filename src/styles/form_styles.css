@@ -131,6 +131,22 @@ form input {
   height: 2rem;
   margin-bottom: 1rem;
 }
+#progress-bar {
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-bottom: 0.3rem;
+  margin-top: 0.3rem;
+}
+#progress-bar[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+#progress-bar[value]::-webkit-progress-value {
+  background-color: rgb(101, 192, 214);
+}
 .submit-btn {
   margin-top: 1rem;
   width: 5rem;
