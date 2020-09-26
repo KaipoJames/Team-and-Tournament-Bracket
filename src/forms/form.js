@@ -33,8 +33,8 @@ export const formApp = {
   init() {
     this.showActivePage();
     this.addEventListeners();
-    //this.getPlayerNames();
-    this.getTeamNames();
+    this.getPlayerNames();
+    //this.getTeamNames();
   },
 
   addEventListeners() {
@@ -72,8 +72,13 @@ export const formApp = {
     console.log(teamName.value);
     console.log(teamCity.value);
     console.log(teamRating.value);
+    let tName = teamName.value;
+    let tCity = teamCity.value;
+    const teamNameLower = tName.toLowerCase();
+    const teamCityLower = tCity.toLowerCase();
+
     //prettier-ignore
-    const team = TeamFactory.createTeam2(teamName.value, teamCity.value, parseInt(teamRating.value));
+    const team = TeamFactory.createTeam2(teamNameLower, teamCityLower, parseInt(teamRating.value));
     this.writeTeamToDatabase(team);
   },
 
@@ -110,7 +115,6 @@ export const formApp = {
         speed: team.speed,
         agility: team.agility,
         endurance: team.endurance,
-        players: team.players,
 
       });
     //console.log(team.name + " is now registered!");
@@ -149,7 +153,7 @@ export const formApp = {
           data.push(snap.val());
         });
         let teams = [];
-        console.log("Number Of Records: " + teams.length);
+        console.log("Number Of Records: " + data.length);
         for (var team of data) {
           const teamObj = this.createTeamObject(team);
           teams.push(teamObj);

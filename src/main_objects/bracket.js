@@ -89,7 +89,7 @@ export const Bracket_Canvas = {
 // Bracket Object To Handle Temporary Changes To Bracket
 export const Bracket_Content = {
   init() {
-    cellsCopy = cells.splice();
+    //cellsCopy = cells.splice();
     //console.log("cellsCopy: " + cellsCopy);
     this.initializeTeams();
 
@@ -182,8 +182,6 @@ export const Bracket_Content = {
   postGameAddClasses(winner, loser) {
     let winnerCell = winner.currentCell;
     let loserCell = loser.currentCell;
-    //console.log("winnerCell: " + winnerCell.children);
-    //console.log("loserCell: " + loserCell.children);
     winnerCell.children[1].classList.add("winner");
     loserCell.children[1].classList.add("defeated");
   },

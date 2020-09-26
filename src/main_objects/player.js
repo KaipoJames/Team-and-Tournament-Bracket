@@ -1,3 +1,5 @@
+import { functions as Functions } from "../functions.js";
+
 class Player {
   //prettier-ignore
   constructor(firstName, lastName, rating, strength, speed, agility, endurance, currentTeam) {
@@ -40,10 +42,10 @@ class Player {
     var min = rating - Math.floor(Math.random() * 10);
     var max = rating + Math.floor(Math.random() * 10);
     while (true) {
-      strength = playerFactory.randomNumber(min, max);
-      speed = playerFactory.randomNumber(min, max);
-      agility = playerFactory.randomNumber(min, max);
-      endurance = playerFactory.randomNumber(min, max);
+      strength = Functions.randomNumber(min, max);
+      speed = Functions.randomNumber(min, max);
+      agility = Functions.randomNumber(min, max);
+      endurance = Functions.randomNumber(min, max);
       sum = strength + speed + agility + endurance;
       average = sum / 4;
       if (average == rating) {
@@ -66,9 +68,5 @@ export const playerFactory = {
     player.endurance = player.calculateStats(rating)[0];
     player.currentTeam = "unassigned";
     return player;
-  },
-
-  randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
   },
 };

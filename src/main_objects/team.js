@@ -1,3 +1,6 @@
+import { functions as Functions } from "../functions.js";
+import { playerFactory as PlayerFactory } from "./player.js";
+
 export class Team {
   constructor(name, city, strength, speed, agility, endurance, rating) {
     this.name = name;
@@ -22,10 +25,10 @@ export class Team {
     var min = rating - Math.floor(Math.random() * 10);
     var max = rating + Math.floor(Math.random() * 10);
     while (true) {
-      strength = teamFactory.randomNumber(min, max);
-      speed = teamFactory.randomNumber(min, max);
-      agility = teamFactory.randomNumber(min, max);
-      endurance = teamFactory.randomNumber(min, max);
+      strength = Functions.randomNumber(min, max);
+      speed = Functions.randomNumber(min, max);
+      agility = Functions.randomNumber(min, max);
+      endurance = Functions.randomNumber(min, max);
       sum = strength + speed + agility + endurance;
       average = sum / 4;
       if (average == rating) {
@@ -126,11 +129,12 @@ export class Team {
   }
 
   addIcon() {
-    this.src = "../img/" + this.name + ".png";
+    this.src = "/assets/img/" + this.name + ".png";
   }
 
-  addPlayer(player) {
-    this.players.push(player);
+  addNewPlayer(firstName, lastName, rating) {
+    const newPlayer = PlayerFactory.createPlayer(firstName, lastName, rating);
+    this.players.push(newPlayer);
   }
 }
 
@@ -163,9 +167,5 @@ export const teamFactory = {
     newTeam.addIcon();
     //newTeam.points = 0;
     return newTeam;
-  },
-
-  randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
   },
 };
